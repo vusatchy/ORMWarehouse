@@ -64,9 +64,17 @@ public class UserController {
         } else {
             model.addAttribute("message", AuthenticationResult.SUCCESS.getValue());
             model.addAttribute("id", String.valueOf(user.getId()));
+            model.addAttribute("name", String.valueOf(user.getLogin()));
+            model.addAttribute("purchases", user.getBoughtProducts());
             return "login";
         }
         return "login";
+    }
+
+    @GetMapping(value = "logout")
+    private String logout(Model model) {
+
+        return "logout";
     }
 
 

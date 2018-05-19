@@ -2,11 +2,14 @@ package com.lnu.bd.rest;
 
 
 import com.lnu.bd.dao.ProductRepository;
+import com.lnu.bd.model.Feedback;
+import com.lnu.bd.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ProductController {
@@ -21,12 +24,16 @@ public class ProductController {
         return "products";
     }
 
-    /*@RequestMapping(value = "/product", method = RequestMethod.GET)
-    public Product byId(@RequestParam(name = "id") int id) {
-        return productRepositiry.getById(id);
+
+    @RequestMapping(value = "/product", method = RequestMethod.GET)
+    public String byId(Model model, @RequestParam(name = "id") int id) {
+        Product product = productRepository.findById(id).get();
+        product.getFeedbacks().sort((x, y) -> y.getDate().compareTo(x.getDate()));
+        model.addAttribute("product", product);
+        return "product";
     }
 
-    @RequestMapping(value = "/product", method = RequestMethod.POST)
+    /*@RequestMapping(value = "/product", method = RequestMethod.POST)
     public void save(@RequestParam(name = "name") String name,
                      @RequestParam(name = "price") float price,
                      @RequestParam(name = "avaliable") boolean avaliable,

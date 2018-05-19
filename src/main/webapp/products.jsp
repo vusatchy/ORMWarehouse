@@ -26,6 +26,19 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
+
+<div class="navbar navbar-inverse navbar-static-top">
+
+ <div class="container">
+
+      <div class="collapse navbar-collapse navHeaderCollapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="${contextPath}/logout">Log out</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
 <body>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -51,12 +64,12 @@
         			<div class="row">
         				<div class="price-details col-md-6">
         					<h1>${product.name}</h1>
-        					<span class="price-new">$${product.price}</span>
+        					<span class="price-new">${product.price}</span>
         				</div>
         			</div>
         			<div class="separator clear-left">
         				<p class="btn-add">
-        					<i class="fa fa-shopping-cart"></i><a href="#" class="hidden-sm">Buy</a>
+        					<i class="fa fa-shopping-cart"></i><a href="${contextPath}/product?id=${product.id}" class="hidden-sm">Buy</a>
         				</p>
         			</div>
         			<div class="clearfix"></div>

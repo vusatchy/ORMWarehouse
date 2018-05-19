@@ -36,7 +36,9 @@
             String value = (String)request.getAttribute("message");
             if(value!=null && value.equals("success")){
                String id = (String)request.getAttribute("id");
+               String name = (String)request.getAttribute("name");
                session.setAttribute("id",id);
+               session.setAttribute("name",name);
                response.sendRedirect("/products");
             }
             else if(session.getAttribute("id")!=null){
