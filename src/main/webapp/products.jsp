@@ -27,17 +27,18 @@
     <![endif]-->
 </head>
 
-<div class="navbar navbar-inverse navbar-static-top">
+  <div class="navbar navbar-inverse navbar-static-top">
 
- <div class="container">
+   <div class="container">
 
-      <div class="collapse navbar-collapse navHeaderCollapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="${contextPath}/logout">Log out</a></li>
-        </ul>
+        <div class="collapse navbar-collapse navHeaderCollapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="${contextPath}/purchase">Your purchases</a></li>
+            <li><a href="${contextPath}/logout">Log out</a></li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
 
 <body>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">

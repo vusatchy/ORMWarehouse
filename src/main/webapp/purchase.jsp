@@ -1,6 +1,9 @@
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!------ Include the above in your HEAD tag ---------->
 
 
@@ -21,9 +24,7 @@
     a.list-group-item.active small {
         color:#fff;
     }
-    .stars {
-        margin:20px auto 1px;
-      }
+
     </style>
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="${contextPath}/css/login.css" rel="stylesheet">
@@ -35,37 +36,62 @@
     <![endif]-->
 </head>
 
+
+  <div class="navbar navbar-inverse navbar-static-top">
+
+   <div class="container">
+
+        <div class="collapse navbar-collapse navHeaderCollapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="${contextPath}/purchase">Your purchases</a></li>
+            <li><a href="${contextPath}/logout">Log out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
 <body>
 <div class="container">
     <div class="row">
 		<div class="well">
-        <h1 class="text-center">Vote for your favorite</h1>
+        <h1 class="text-center">Products you bought</h1>
         <div class="list-group">
-          <a href="#" class="list-group-item active">
+
+          <c:forEach items="${purchases}" var="purchase">
+          <a href="#" class="list-group-item">
                 <div class="media col-md-3">
                     <figure class="pull-left">
-                        <img class="media-object img-rounded img-responsive"  src="http://placehold.it/350x250" alt="placehold.it/350x250" >
+                        <img src="images/${purchase.product.picturePath}.jpg" height="200" width="200"  alt="placehold.it/350x250" >
                     </figure>
                 </div>
                 <div class="col-md-6">
-                    <h4 class="list-group-item-heading"> List group heading </h4>
-                    <p class="list-group-item-text"> Qui diam libris ei, vidisse incorrupte at mel. His euismod salutandi dissentiunt eu. Habeo offendit ea mea. Nostro blandit sea ea, viris timeam molestiae an has. At nisl platonem eum.
-                        Vel et nonumy gubergren, ad has tota facilis probatus. Ea legere legimus tibique cum, sale tantas vim ea, eu vivendo expetendis vim. Voluptua vituperatoribus et mel, ius no elitr deserunt mediocrem. Mea facilisi torquatos ad.
-                    </p>
+
+                    <h2 class="list-group-item-text">
+                            ${purchase.product.name}
+                    </h2>
                 </div>
                 <div class="col-md-3 text-center">
-                    <h2> 14240 <small> votes </small></h2>
-                    <button type="button" class="btn btn-default btn-lg btn-block"> Vote Now! </button>
-                    <div class="stars">
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star-empty"></span>
-                    </div>
-                    <p> Average 4.5 <small> / </small> 5 </p>
+                    <h2> ${purchase.product.price} <small> dollars </small></h2>
+                    <p>  ${purchase.time} </p>
                 </div>
-          </a>
+        </a>
+	    </c:forEach>
+	         <a href="#" class="list-group-item">
+                        <div class="media col-md-3">
+                        <figure class="pull-left">
+                            <img src="images/white.jpg" height="200" width="200"  alt="placehold.it/350x250" >
+                        </figure>
+                        </div>
+                        <div class="col-md-6">
+
+                        <h2 class="list-group-item-text">
+                            Total sum of all bought products
+                        </h2>
+                        </div>
+                        <div class="col-md-3 text-center">
+                             <h2> ${sum} <small> dollars </small></h2>
+                        </div>
+              </a>
         </div>
         </div>
 	</div>

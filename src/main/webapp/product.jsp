@@ -165,6 +165,7 @@
 
         <div class="collapse navbar-collapse navHeaderCollapse">
           <ul class="nav navbar-nav navbar-right">
+            <li><a href="${contextPath}/purchase">Your purchases</a></li>
             <li><a href="${contextPath}/logout">Log out</a></li>
           </ul>
         </div>
@@ -195,7 +196,7 @@
 						<h4 class="price">current price: <span>${product.price}</span></h4>
 						<h4 class="avaliable">avaliable: <span>${product.avaliable}</span></h4>
 						<div class="action">
-						    <form action="${contextPath}/purchase">
+						    <form action="${contextPath}/purchase?id=${product.id}" method = "post">
 							<button class="add-to-cart btn btn-default" type="submit">Buy</button>
 							</form>
 						</div>
